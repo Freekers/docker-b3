@@ -9,7 +9,8 @@ RUN apt-get install -y tar git curl nano wget dialog net-tools build-essential p
 
 WORKDIR /opt
 
-RUN git clone https://github.com/BigBrotherBot/big-brother-bot/tree/release-1.10 /opt/b3
+RUN git clone https://github.com/BigBrotherBot/big-brother-bot.git /opt/b3
+RUN cd /opt/b3 && git checkout -b release-1.10 origin/release-1.10
 
 RUN pip -r /opt/b3/pip-requires.txt
 
