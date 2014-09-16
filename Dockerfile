@@ -6,6 +6,7 @@ VOLUME /data
 
 RUN apt-get update
 RUN apt-get install -y tar git curl nano wget dialog net-tools build-essential python-mysqldb python python-dev python-distribute python-pip
+RUN apt-get install -y libsqlite3-dev sqlite3
 
 WORKDIR /opt
 
