@@ -6,3 +6,5 @@ RUN pip install -e git+git://github.com/BigBrotherBot/big-brother-bot.git@releas
 VOLUME /data
 
 ENTRYPOINT ["/usr/local/bin/b3_run"]
+
+CMD ["-c", "/data/b3.xml"]
