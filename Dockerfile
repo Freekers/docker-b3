@@ -4,7 +4,7 @@ MAINTAINER Martijn van Maurik <docker@vmaurik.nl>
 ENV HOME /data
 VOLUME /data
 
-RUN apt-get update && apt-get install python-mysqldb
+RUN apt-get update && apt-get install python-mysqldb -qy
 
 RUN pip install b3
 
