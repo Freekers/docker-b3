@@ -1,10 +1,13 @@
 FROM python:2.7
 MAINTAINER Martijn van Maurik <docker@vmaurik.nl>
 
-RUN pip install -e git+git://github.com/BigBrotherBot/big-brother-bot.git@release-1.10#egg=b3
-
+ENV HOME /data
 VOLUME /data
 
-ENTRYPOINT ["/usr/local/bin/b3_run"]
+RUN pip install b3
 
-CMD ["-c", "/data/b3.xml"]
+ADD start.sh /start.sh
+RUN chmod +x /start.sh
+
+ENTRYPOINT ["/start.sh"]
+CMD ["--help"]
