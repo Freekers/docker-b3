@@ -4,6 +4,8 @@ MAINTAINER Martijn van Maurik <docker@vmaurik.nl>
 ENV HOME /data
 VOLUME /data
 
+RUN apt-get update && python-mysqldb
+
 RUN pip install b3
 
 ADD start.sh /start.sh
