@@ -12,6 +12,8 @@ WORKDIR /opt
 
 RUN git clone https://github.com/BigBrotherBot/big-brother-bot.git /opt/b3
 RUN cd /opt/b3 && git checkout -b release-1.10 origin/release-1.10
+RUN mv /opt/b3/b3/conf /opt/b3/b3/.conf
+RUN mv /opt/b3/b3/extplugins /opt/b3/b3/.extplugins
 
 RUN pip install -r /opt/b3/pip-requires.txt
 
