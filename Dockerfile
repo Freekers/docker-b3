@@ -1,11 +1,13 @@
 FROM ubuntu-debootstrap:14.04
 MAINTAINER Martijn van Maurik <docker@vmaurik.nl>
 
+ENV DEBIAN_FRONTEND noninteractive
+
 ENV HOME /data
 VOLUME /data
 
-RUN apt-get update && apt-get dist-upgrade && \
-    apt-get install -y libsqlite3-dev sqlite3 tar git curl nano wget dialog net-tools build-essential python-mysqldb python python-dev python-distribute python-pip postgresql-common
+RUN apt-get update && apt-get dist-upgrade -yq && \
+    apt-get install -yq libsqlite3-dev sqlite3 tar git curl nano wget dialog net-tools build-essential python-mysqldb python python-dev python-distribute python-pip postgresql-common
 
 WORKDIR /opt
 
