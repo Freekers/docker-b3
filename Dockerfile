@@ -10,10 +10,8 @@ RUN apt-get install -y libsqlite3-dev sqlite3
 
 WORKDIR /opt
 
-#RUN git clone https://github.com/BigBrotherBot/big-brother-bot.git /opt/b3
-RUN git clone https://github.com/thomasleveil/big-brother-bot.git /opt/b3
-#RUN cd /opt/b3 && git checkout -b release-1.10 origin/release-1.10
-RUN cd /opt/b3 && git checkout -b gh-216 origin/gh-216
+RUN git clone https://github.com/BigBrotherBot/big-brother-bot.git /opt/b3
+RUN cd /opt/b3 && git checkout -b release-1.10 origin/release-1.10
 RUN mv /opt/b3/b3/conf /opt/b3/b3/.conf
 RUN mv /opt/b3/b3/extplugins /opt/b3/b3/.extplugins
 
