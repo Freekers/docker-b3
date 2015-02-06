@@ -7,7 +7,7 @@ ENV HOME /data
 VOLUME /data
 
 RUN apt-get update && apt-get dist-upgrade -yq && \
-    apt-get install -yq libsqlite3-dev sqlite3 tar git curl nano wget dialog net-tools build-essential python-mysqldb python python-dev python-distribute python-pip postgresql-common
+    apt-get install -yq libsqlite3-dev sqlite3 tar git curl nano wget dialog net-tools build-essential python-mysqldb python python-dev python-distribute python-pip postgresql-common libpq-dev
 
 WORKDIR /opt
 
