@@ -11,7 +11,7 @@ RUN apt-get update && apt-get dist-upgrade -yq && \
 WORKDIR /opt
 
 RUN git clone https://github.com/BigBrotherBot/big-brother-bot.git /opt/b3 && \
-    cd /opt/b3 && git checkout -b release-1.12 origin/release-1.12 && \
+    cd /opt/b3 && git checkout -b master && \
     mv /opt/b3/b3/conf /opt/b3/b3/.conf && \
     mv /opt/b3/b3/extplugins /opt/b3/b3/.extplugins && \
     pip install -r /opt/b3/pip-requires.txt
