@@ -1,5 +1,4 @@
-FROM ubuntu-debootstrap:14.04
-MAINTAINER Martijn van Maurik <docker@vmaurik.nl>
+FROM ubuntu:latest
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -12,7 +11,7 @@ RUN apt-get update && apt-get dist-upgrade -yq && \
 WORKDIR /opt
 
 RUN git clone https://github.com/BigBrotherBot/big-brother-bot.git /opt/b3 && \
-    cd /opt/b3 && git checkout -b release-1.10 origin/release-1.10 && \
+    cd /opt/b3 && git checkout -b release-1.12 origin/release-1.12 && \
     mv /opt/b3/b3/conf /opt/b3/b3/.conf && \
     mv /opt/b3/b3/extplugins /opt/b3/b3/.extplugins && \
     pip install -r /opt/b3/pip-requires.txt
