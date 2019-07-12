@@ -1,5 +1,6 @@
 # Big Brother Bot (B3) as Docker
 Runs current latest head from master at https://github.com/BigBrotherBot/big-brother-bot
+
 Supports sqlite database as well as an external MariaDB/MySQL database.
 
 # Usage
