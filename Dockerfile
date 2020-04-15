@@ -5,8 +5,11 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV HOME /data
 VOLUME /data
 
-RUN apt-get update && apt-get dist-upgrade -yq && \
-    apt-get install -yq libsqlite3-dev sqlite3 tar git curl nano wget dialog net-tools build-essential python-mysqldb python python-dev python-distribute python-pip postgresql-common libpq-dev
+RUN apt-get update && \
+    apt-get -y upgrade && \
+    apt-get -y install --no-install-recommends libsqlite3-dev sqlite3 git dialog net-tools build-essential python-mysqldb python python-dev python-distribute python-pip postgresql-common libpq-dev && \ 
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /opt
 
