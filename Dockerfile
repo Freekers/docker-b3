@@ -17,6 +17,7 @@ RUN git clone https://github.com/BigBrotherBot/big-brother-bot.git /opt/b3 && \
     mv /opt/b3/b3/conf /opt/b3/b3/.conf && \
     mv /opt/b3/b3/extplugins /opt/b3/b3/.extplugins && \
     mv /opt/b3/b3/parsers /opt/b3/b3/.parsers && \
+    pip install wheel && \
     pip install -r /opt/b3/requirements.txt
 
 ADD start.sh /opt/start.sh
