@@ -7,7 +7,7 @@ VOLUME /data
 
 RUN apt-get update && \
     apt-get -y upgrade && \
-    apt-get -y install --no-install-recommends libsqlite3-dev sqlite3 git dialog net-tools build-essential python-mysqldb python python-dev python-distribute python-pip postgresql-common libpq-dev && \ 
+    apt-get -y install --no-install-recommends git build-essential python python-pip libsqlite3-dev && \ 
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
