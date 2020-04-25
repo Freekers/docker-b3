@@ -7,7 +7,7 @@ VOLUME /data
 
 RUN apt-get update && \
     apt-get -y upgrade && \
-    apt-get -y install --no-install-recommends git build-essential python python-pip python-distribute libsqlite3-dev && \ 
+    apt-get -y install --no-install-recommends git build-essential net-tools python python-pip python-distribute libsqlite3-dev && \ 
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
