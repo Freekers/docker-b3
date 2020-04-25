@@ -1,10 +1,17 @@
 # Big Brother Bot (B3) as Docker
-Runs current latest head from master at https://github.com/BigBrotherBot/big-brother-bot
 
-Supports sqlite database as well as an external MariaDB/MySQL database.
+Docker version of Big Brother Bot (B3). Based on Ubuntu 18.04 (Bionic), which is the last Ubuntu LTS version to (officially) support Python 2, the language B3 was written in.
 
-# Usage
-Create `data` folder with following folder structure:
+## Tags
+
+This image supports two tags:
+- `latest` Supports a sqlite database as well as an external MariaDB/MySQL and PostgreSQL database.
+- `minimal` Supports only a sqlite database 
+
+Both tags run the current head from master at https://github.com/BigBrotherBot/big-brother-bot
+
+## Usage
+Create a `data` folder to mount to the container, with following folder structure:
 ```
 /opt/b3/data
 ├── conf
@@ -27,7 +34,7 @@ services:
     container_name: b3
     restart: always
     volumes:
-     - /opt/cod2/server1/server1.log:/var/log/server1.log
+     - /opt/cod2/main/games_mp.log:/var/log/games_mp.log
      - /opt/b3/b3:/data
     command: -c /opt/b3/b3/conf/myserver.xml
 ```
@@ -48,7 +55,7 @@ services:
     <!--The amount of logging you want in your b3.log file. Lower numbers log more information.-->
     <set name="log_level">21</set>
     <!--Name and path of the logfile the bot will generate.<br/>@conf : the folder containing this config file-->
-    <set name="logfile">@conf/cod2_server1.log</set>
+    <set name="logfile">@conf/b3.log</set>
     <!--Your game parser.-->
     <set name="parser">cod2</set>
     <!--Your database info: [mysql]://[db-user]:[db-password]@[db-server[:port]]/[db-name]-->
@@ -70,7 +77,7 @@ services:
     <!--Select on if you use Punkbuster, otherwise select off.-->
     <set name="punkbuster">off</set>
     <!--Select your game log file location.-->
-    <set name="game_log">/var/log/server1.log</set>
+    <set name="game_log">/var/log/games_mp.log</set>
   </settings>
   <settings name="messages">
     <!--The message that will be displayed when a player is kicked by a mod/admin.-->
@@ -101,11 +108,13 @@ services:
     <plugin name="admin" config="@conf/plugin_admin_stock.ini"/>
     <!--Aimbot Detector-->
     <plugin name="aimbotdetector" config="/opt/b3/b3/extplugins/conf/aimbotdetector.xml"/>
-	  <!--High Ping Kicker-->
-	  <plugin name="pingkicker" config="/opt/b3/b3/extplugins/plugin_pingkicker.xml"/>
-	  <!--Kill Streak-->
-	  <plugin name="spree" config="@conf/plugin_spree.ini"/>
-	  <!--Ads-->
-	  <plugin name="adv" config="@conf/plugin_adv_cod2.xml" />
+    <!--High Ping Kicker-->
+    <plugin name="pingkicker" config="/opt/b3/b3/extplugins/plugin_pingkicker.xml"/>
+    <!--Kill Streak-->
+    <plugin name="spree" config="@conf/plugin_spree.ini"/>
+    <!--Ads-->
+    <plugin name="adv" config="@conf/plugin_adv_cod2.xml" />
   </plugins>
 </configuration>
+```
+Note: Generate your own config file here: http://statsgen.co.uk/b3-config-generator/
