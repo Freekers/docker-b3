@@ -1,4 +1,6 @@
-# Big Brother Bot (B3) as Docker
+# Big Brother Bot (B3) as Docker 
+
+[![Build and Push Docker Image](https://github.com/Freekers/docker-b3/actions/workflows/automation.yml/badge.svg)](https://github.com/Freekers/docker-b3/actions/workflows/automation.yml)
 
 Docker version of Big Brother Bot (B3). Based on Ubuntu 18.04 (Bionic), which is the last Ubuntu LTS version to (officially) support Python 2, the language B3 was written in.
 
