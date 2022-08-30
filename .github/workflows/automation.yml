@@ -1,4 +1,4 @@
-name: Build and Push Docker Image
+name: Build and Push Docker Images
 on: 
  push:
  schedule:
@@ -9,14 +9,43 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: master
+
       - name: Login to DockerHub
         uses: docker/login-action@v1 
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
         with:
+          context: .
           push: true
           tags: freekers/docker-b3:latest,freekers/docker-b3:${{ github.run_number }}
+
+  docker-minimal:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Minimal
+        uses: actions/checkout@v3
+        with:
+          ref: minimal
+        
+      - name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push minimal
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: freekers/docker-b3:minimal,freekers/docker-b3:minimal-${{ github.run_number }}
